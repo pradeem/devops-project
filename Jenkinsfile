@@ -1,6 +1,8 @@
 pipeline {
   agent any
-
+  tools {
+    git 'DefaultGit'
+  }
   environment {
     TF_DIR = 'terraform'
   }
