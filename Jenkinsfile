@@ -30,12 +30,14 @@ pipeline {
 
     stage('Terraform Apply') {
       steps {
-        dir("${TF_DIR}") {
-          sh 'terraform apply -auto-approve'
+        withCredentials([file(credentialsId: 'ec2-ssh-key', variable: 'SSH_KEY')]) {
+          sh '''
+            terraform init
+            terraform apply -var="private_key_path=$SSH_KEY" -auto-approve
+          '''
         }
       }
     }
-
     stage('Deploy Application') {
       steps {
         sh 'bash scripts/deploy.sh'
