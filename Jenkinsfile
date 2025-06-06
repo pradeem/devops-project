@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git credentialsId: 'github-https', url: 'https://github.com/pradeem/devops-project.git'
+        git branch: 'main', credentialsId: 'github-https', url: 'https://github.com/pradeem/devops-project.git'
       }
     }
 
