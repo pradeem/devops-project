@@ -31,12 +31,12 @@ pipeline {
     stage('Terraform Apply') {
       steps {
         withCredentials([file(credentialsId: 'ec2-ssh-key', variable: 'SSH_KEY')]) {
-          sh '''
+          sh """
             echo "SSH key path is: $SSH_KEY"
             ls -l $SSH_KEY
             terraform init
             terraform apply -auto-approve -var="private_key_path=$SSH_KEY" 
-          '''
+          """
         }
       }
     }
