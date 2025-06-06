@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git 'https://github.com/pradeem/devops-project.git'
+        git credentialsId: 'github-https', url: 'https://github.com/pradeem/devops-project.git'
       }
     }
 
