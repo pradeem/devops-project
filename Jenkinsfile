@@ -1,8 +1,6 @@
 pipeline {
   agent any
-  tools {
-    git 'DefaultGit'
-  }
+
   environment {
     TF_DIR = 'terraform'
   }
@@ -10,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git 'https://github.com/your-org/devops-project.git'
+        git 'https://github.com/pradeem/devops-project.git'
       }
     }
 
