@@ -32,8 +32,10 @@ pipeline {
       steps {
         withCredentials([file(credentialsId: 'ec2-ssh-key', variable: 'SSH_KEY')]) {
           sh '''
+            echo "SSH key path is: $SSH_KEY"
+            ls -l $SSH_KEY
             terraform init
-            terraform apply -var="private_key_path=$SSH_KEY" -auto-approve
+            terraform apply -auto-approve -var="private_key_path=$SSH_KEY" 
           '''
         }
       }
