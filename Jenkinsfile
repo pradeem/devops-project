@@ -3,6 +3,7 @@ pipeline {
 
   environment {
     TF_DIR = 'terraform'
+    TF_VAR_key_name = 'devopsuser-ec2-key'
     TF_VAR_private_key_path = ''
   }
 
